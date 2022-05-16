@@ -4,11 +4,6 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
 .App-header {
   background-color: #0f1728;
   min-height: 25vh;
@@ -20,11 +15,38 @@
   color: rgb(250, 238, 219);
 }
 
-.App-link {
-  color: #61dafb;
-}
-
 body{
   font-family: 'IM Fell English SC';
   background-color: rgb(250, 238, 219);
+}
+
+#poetry-prompt-container{
+  margin: 2%;
+}
+
+#poetry-prompt {
+  width: 60vw;
+  height: 15vh;
+  border: #0f1728 solid .3vh;
+  font-family: fantasy;
+  font-weight: bold;
+}
+
+#title{
+  margin-bottom: 0%;
+  font-stretch: expanded;
+}
+
+#sub-title{
+  margin-top: 0%;
+  font-stretch: extra-expanded;
+  color: rgb(170, 171, 185);
+}
+
+button{
+  font-family: fantasy;
+  font-weight: bold;
+  color:rgb(170, 171, 185);
+  background-color: #0f1728;
+  border-radius: 10px;
 }
