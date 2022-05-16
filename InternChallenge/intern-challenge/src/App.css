@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap');
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #0f1728;
+  min-height: 25vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: rgb(250, 238, 219);
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+body{
+  font-family: 'IM Fell English SC';
+  background-color: rgb(250, 238, 219);
+}
