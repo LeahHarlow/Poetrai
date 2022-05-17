@@ -23,35 +23,30 @@ export const _deletePoem = (poem) => {
   };
 };
 
-export const fetchPoems = () => {
+export const fetchPoems = (poems) => {
   return(dispatch) => {
-
+    dispatch(setPoems(poems));
   };
 };
 
 export const addPoem = (poem) => {
   return (dispatch) => {
-    try {
-      //how it work?
-    } catch (error) {
-      console.error('theres something wrong with your add POEM thunk');
-      console.log(error);
-    }
-  };
+    dispatch(_addPoem(poem));
+  }
 };
 
-export const deletePoem = (id, history) => {
-  return async (dispatch) => {
-    // const token = window.localStorage.getItem(TOKEN);
-    // const { data: POEM } = await axios.delete(`/api/POEMs/${id}`, {
-    //   headers: {
-    //     authorization: token,
-    //   },
-    // });
-    // dispatch(_deletePOEM(POEM));
-    //history.push('/poems');
-  };
-};
+// export const deletePoem = (id, history) => {
+//   return async (dispatch) => {
+//     // const token = window.localStorage.getItem(TOKEN);
+//     // const { data: poem } = await axios.delete(`/api/POEMs/${id}`, {
+//     //   headers: {
+//     //     authorization: token,
+//     //   },
+//     // });
+//     // dispatch(_deletePpem(poem));
+//     //history.push('/poems');
+//   };
+// };
 
 const initialState = [];
 
