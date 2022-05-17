@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch} from 'react-redux';
-import addPoem from '../store/poems'
+import { addPoem } from '../store/poems'
 
 const InputForm = () => {
   const [poetryPrompt, setPoetryPrompt] = useState('');
@@ -9,7 +9,9 @@ const InputForm = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => { //this shoulllld be adding the generated poem to the store
+  console.log('CURRENT POEM', currentPoem)
+
+  useEffect(() => {
     if (currentPoem) {
       dispatch(addPoem(currentPoem));
     }
