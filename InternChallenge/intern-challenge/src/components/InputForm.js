@@ -1,20 +1,26 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch} from 'react-redux';
+import addPoem from '../store/poems'
 
 const InputForm = () => {
   const [poetryPrompt, setPoetryPrompt] = useState('');
   const [response, setResponse] = useState({});
-  const [poem, setPoem] = useState('');
+  const [currentPoem, setCurrentPoem] = useState('');
 
-  //ok two options here:
-  //1: use redux to make a store that holds a universal state that poems can be read from
-  //2: make a db that saves the poems to be pulled up again
+  const dispatch = useDispatch();
+
+  useEffect(() => { //this shoulllld be adding the generated poem to the store
+    if (currentPoem) {
+      dispatch(addPoem(currentPoem));
+    }
+  }, [dispatch, currentPoem]);
 
   useEffect(() => {
     if (Object.keys(response).length) {
-      setPoem(response.choices[0].text);
-      console.log(poem) // REMEMBER TO DELETE ME LATER PLEASE AND THANK YOU
+      setCurrentPoem(response.choices[0].text);
+      console.log(currentPoem); // REMEMBER TO DELETE ME LATER PLEASE AND THANK YOU
     }
-  }, [response, poem]);
+  }, [response, currentPoem]);
 
   const prompt = {
     prompt: `${poetryPrompt}`,
@@ -42,7 +48,7 @@ const InputForm = () => {
       .then((res) => res.json())
       .then((json) => {
         setResponse(json);
-        console.log('JSON', json);
+        console.log('JSON', json); // REMEMBER TO DELETE ME LATER PLEASE AND THANK YOU
       });
   };
 

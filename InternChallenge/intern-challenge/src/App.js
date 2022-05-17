@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
-import InputForm from './InputForm';
-import PreviousPoems from './PreviousPoems';
+import InputForm from './components/InputForm';
+import PreviousPoems from './components/PreviousPoems';
 
 function App() {
   return (
