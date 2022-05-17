@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from 'react';
 
-//this is also where I want to make the api call when they hit submit
-
 const InputForm = () => {
   const [poetryPrompt, setPoetryPrompt] = useState('');
-  const [response, setResponse] = useState('');
+  const [response, setResponse] = useState({});
 
-  //const [poem, setPoem] = useState('');
+  const [poem, setPoem] = useState(''); //need to add poem to poems history array for PreviousPoems to use, make db?
 
-  // useEffect(() => {
-  //   if (response.length) {
-  //     setPoem(response.choices[0].text)
-  //     console.log(poem)
-  //   }
-  // }, [response, poem]);
+  useEffect(() => {
+    if (Object.keys(response).length) {
+     setPoem(response.choices.text)
+       console.log('poem', poem)
+    }
+  }, [response,poem]);
 
   const prompt = {
     "prompt": `${poetryPrompt}`,
@@ -29,17 +27,18 @@ const InputForm = () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        authorization: `Bearer ${process.env.REACT_APP_OPENAI_SECRET}`,
+        authorization: `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
       },
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
       .then((json) => {
         setResponse(json);
+        console.log('JSON',json)
       });
+      console.log('RESPONSE.CHOICES RIGHT HERE', response);
     };
 
-  console.log(response.choices[0].text);
 
   const handleInputChange = (event) => {
     const poetryPrompt = event.target.value;
