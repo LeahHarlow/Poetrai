@@ -2,8 +2,6 @@ const SET_POEMS = 'SET_POEMS';
 const ADD_POEM = 'ADD_POEM';
 const DELETE_POEM = 'DELETE_POEM'; //future state
 
-//const TOKEN = 'token';
-
 export const setPoems = (poems) => {
   return {
     type: SET_POEMS,
@@ -18,26 +16,21 @@ export const _addPoem = (poem) => {
   };
 };
 
-export const _deletePoem = (POEM) => {
+export const _deletePoem = (poem) => {
   return {
     type: DELETE_POEM,
-    POEM,
+    poem,
   };
 };
 
 export const fetchPoems = () => {
-  return async (dispatch) => {
-    try {
-      //where does it come from?
-    } catch (err) {
-      console.error('I have zero poems here');
-      console.log(err);
-    }
+  return(dispatch) => {
+
   };
 };
 
 export const addPoem = (poem) => {
-  return async (dispatch) => {
+  return (dispatch) => {
     try {
       //how it work?
     } catch (error) {

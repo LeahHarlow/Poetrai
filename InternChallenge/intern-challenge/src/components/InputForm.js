@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 const InputForm = () => {
   const [poetryPrompt, setPoetryPrompt] = useState('');
   const [response, setResponse] = useState({});
-  const [poem, setPoem] = useState(''); 
+  const [poem, setPoem] = useState('');
 
   //ok two options here:
   //1: use redux to make a store that holds a universal state that poems can be read from
@@ -12,7 +12,7 @@ const InputForm = () => {
   useEffect(() => {
     if (Object.keys(response).length) {
       setPoem(response.choices[0].text);
-      console.log(poem)
+      console.log(poem) // REMEMBER TO DELETE ME LATER PLEASE AND THANK YOU
     }
   }, [response, poem]);
 
