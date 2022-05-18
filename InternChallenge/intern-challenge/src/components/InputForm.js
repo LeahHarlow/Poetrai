@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { addPoem } from '../store/poems';
+import { addPoem, clearPoems } from '../store/poems';
 
 const InputForm = () => {
   const [poetryPrompt, setPoetryPrompt] = useState('');
@@ -58,6 +58,10 @@ const InputForm = () => {
     setSubmittedStatus(true);
   };
 
+  const clearAllPoems = () => {
+    dispatch(clearPoems())
+  }
+
   //control input and set the poetry prompt to local state
   const handleInputChange = (event) => {
     const poetryPrompt = event.target.value;
@@ -75,6 +79,7 @@ const InputForm = () => {
         />
       </form>
       <button onClick={() => writePoem(prompt)}>Generate Poem</button>
+      <button onClick={() => clearAllPoems()}>Clear All Poems</button>
     </>
   );
 };
