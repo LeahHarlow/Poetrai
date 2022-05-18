@@ -9,20 +9,17 @@ const InputForm = () => {
 
   const dispatch = useDispatch();
 
-  console.log('CURRENT POEM', currentPoem)
-
   useEffect(() => {
-    if (currentPoem) {
-      dispatch(addPoem(currentPoem));
+    if (currentPoem.length) {
+      dispatch(addPoem({prompt: poetryPrompt, poem: currentPoem}));
     }
-  }, [dispatch, currentPoem]);
+  }, [dispatch, currentPoem, poetryPrompt]);
 
   useEffect(() => {
     if (Object.keys(response).length) {
       setCurrentPoem(response.choices[0].text);
-      console.log(currentPoem); // REMEMBER TO DELETE ME LATER PLEASE AND THANK YOU
     }
-  }, [response, currentPoem]);
+  }, [response, currentPoem, poetryPrompt]);
 
   const prompt = {
     prompt: `${poetryPrompt}`,
@@ -38,7 +35,7 @@ const InputForm = () => {
   };
 
   const writePoem = (data) => {
-    console.log('clicked');
+    console.log('writing Poem');
     fetch('https://api.openai.com/v1/engines/text-curie-001/completions', {
       method: 'POST',
       headers: {

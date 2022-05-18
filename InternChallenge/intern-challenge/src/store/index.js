@@ -6,7 +6,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import poemsReducer from './poems';
 
 //I know that this is overkill for the current size of the app but I'm putting it here for later scalability.
-const reducer = combineReducers({ poems: poemsReducer });
+const reducer = combineReducers({ poemObject: poemsReducer });
 
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))

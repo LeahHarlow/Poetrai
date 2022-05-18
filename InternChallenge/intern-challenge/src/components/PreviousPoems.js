@@ -1,21 +1,21 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 
 const PreviousPoems = () => {
-  //const [previousPoems, setPreviousPoems] = useState(''); //I think useSelector will trigger a rerender if it changes too so I might not even need local state
 
-  const poems = useSelector((state) => {
-    return state.poems || '';
+  const poemObject = useSelector((state) => {
+    return state.poemObject || '';
   });
 
-  //setPreviousPoems(poems);
   return (
     <>
-      {poems.length ? (
-          <div className='poems'>
-            {poems.map((poem) => (
-              <div className='poem' key={poem.id}>
-              {poem}
+      {poemObject.length ? (
+          <div className='poemObject'>
+            {Object.keys(poemObject).map((poemKey) => (
+              <div className='poem' key={poemKey}>
+              Prompt: {poemObject[poemKey].prompt}
+              Poem:
+              {poemObject[poemKey].poem}
               </div>
             ))}
           </div>
