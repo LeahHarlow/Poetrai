@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch} from 'react-redux';
-import { addPoem } from '../store/poems'
+import { useDispatch } from 'react-redux';
+import { addPoem } from '../store/poems';
 
 const InputForm = () => {
   const [poetryPrompt, setPoetryPrompt] = useState('');
   const [response, setResponse] = useState({});
   const [currentPoem, setCurrentPoem] = useState('');
+  const [submittedStatus, setSubmittedStatus] = useState(false);
 
   const dispatch = useDispatch();
 
   //Once I have the generated poem on local state I want to send one object with the prompt and the poem together to the store to be read by the PreviousPoems component to save redundant redux
+
   useEffect(() => {
-    if (currentPoem.length) {
+    if (!!submittedStatus && currentPoem.length) {
       dispatch(addPoem({prompt: poetryPrompt, poem: currentPoem}));
+      setSubmittedStatus(false);
     }
-  }, [dispatch, currentPoem, poetryPrompt]);
+  }, [dispatch, currentPoem, poetryPrompt, submittedStatus]);
 
   //grabbing the poem off of the json response and addign it to local state
   useEffect(() => {
@@ -52,6 +55,7 @@ const InputForm = () => {
       .then((json) => {
         setResponse(json);
       });
+    setSubmittedStatus(true);
   };
 
   //control input and set the poetry prompt to local state
