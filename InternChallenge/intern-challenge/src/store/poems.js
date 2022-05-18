@@ -1,10 +1,10 @@
 const ADD_POEM = 'ADD_POEM';
-const CLEAR_POEMS = 'CLEAR_POEMS'; //future state
+const CLEAR_POEMS = 'CLEAR_POEMS';
 
-export const _addPoem = (poemObject) => {
+export const _addPoem = (promptAndPoem) => {
   return {
     type: ADD_POEM,
-    poemObject,
+    promptAndPoem,
   };
 };
 
@@ -15,9 +15,9 @@ export const _clearPoems = (poems) => {
   };
 };
 
-export const addPoem = (poemObject) => {
+export const addPoem = (promptAndPoem) => {
   return (dispatch) => {
-    dispatch(_addPoem(poemObject));
+    dispatch(_addPoem(promptAndPoem));
   };
 };
 
@@ -33,7 +33,7 @@ const initialState = [];
 export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_POEM:
-      return [...state, action.poemObject];
+      return [...state, action.promptAndPoem];
     case CLEAR_POEMS:
       return (state = []);
     default:

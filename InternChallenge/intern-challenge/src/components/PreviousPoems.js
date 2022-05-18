@@ -3,19 +3,19 @@ import { useSelector } from 'react-redux';
 
 const PreviousPoems = () => {
 
-  const poemObject = useSelector((state) => {
-    return state.poemObject || '';
+  const promptAndPoem = useSelector((state) => {
+    return state.promptAndPoem || '';
   });
 
   return (
     <>
-      {poemObject.length ? (
-          <div className='poemObject'>
-            {Object.keys(poemObject).map((poemKey) => (
+      {promptAndPoem.length ? (
+          <div className='promptAndPoem'>
+            {Object.keys(promptAndPoem).map((poemKey) => (
               <div className='poem' key={poemKey}>
-              Prompt: {poemObject[poemKey].prompt}
+              Prompt: {promptAndPoem[poemKey].prompt}
               Poem:
-              {poemObject[poemKey].poem}
+              {promptAndPoem[poemKey].poem}
               </div>
             ))}
           </div>
